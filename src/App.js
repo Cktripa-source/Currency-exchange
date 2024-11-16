@@ -114,7 +114,7 @@ const App = () => {
         <div className="flex flex-col lg:flex-row lg:space-x-6">
           {/* Contact Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6 mb-6 lg:mb-0">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">Contact Us & Payment Proof</h2>
+            <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">Contact Us & Payment Proof</h2>
             {error && <p className="text-red-500">{error}</p>}
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -165,7 +165,7 @@ const App = () => {
                   />
                   <button
                     type="button"
-                    onClick={() => document.getElementById("fileInput").click()}
+                    onClick={() => document.getElementById("fileInput").click();alert(document.getElementById('fileInput'))}
                     className="w-full bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-600 my-4"
                   > 
                     Upload Screenshot
@@ -184,7 +184,7 @@ const App = () => {
 
           {/* Currency Converter Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">
               Currency Converter
             </h2>
             <div className="space-y-4">
@@ -235,7 +235,7 @@ const App = () => {
       <footer className="bg-gray-800 text-white text-center py-4">
         <p>
           © 2024 Currency Transfer App | Developed by Patrick |{" "}
-         <div className="flex gap-6 text-xl text-green-600"> <a
+         <div className="flex gap-6 text-xl text-green-600 justify-center w-full text-center"> <a
             href="https://www.instagram.com/ck_tr_pa/"
             target="_blank"
             className="underline"
