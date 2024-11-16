@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
+import backgroundImage from "./1711107399590.gif"
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -74,30 +75,45 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-green-100">
       {/* Header */}
-      <header className="bg-indigo-600 text-white p-4 text-center">
-        <h1 className="text-2xl font-bold">CURRENCY TRANSFER APP</h1>
+      <header className="bg-green-500 text-white p-4 text-center">
+        <h1 className="text-2xl font-bold p-4 border rounded-full">CURRENCY TRANSFER APP</h1>
       </header>
 
       {/* Welcome Section */}
-      <section className="h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Welcome</h2>
-          <p className="text-lg text-gray-600 max-w-lg mx-auto">
-            Welcome to the Currency Transfer App! Here, you can send messages
-            with payment proof and also convert currencies between Indian Rupees
-            (INR) and Rwandan Francs (FRW).
-          </p>
-        </div>
-      </section>
+      <section
+  className="h-1/2 p-6 sm:p-10 py-10 sm:py-20 flex items-center justify-center relative bg-cover sm:bg-contain bg-center"
+  style={{
+    backgroundImage: `url(${backgroundImage})`,
+  }}
+>
+  {/* Blurred Overlay */}
+  <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+
+  {/* Content */}
+  <div className="relative z-10 text-center">
+    <h2 className="text-6xl sm:text-8xl font-extrabold text-green-400 mb-4">
+      Welcome
+    </h2>
+    <p className="text-xl sm:text-4xl text-green-100 max-w-4xl mx-auto font-mono font-extrabold">
+      Welcome to the Currency Transfer App! Here, you can send messages with
+      payment proof and also convert currencies between Indian Rupees (INR) and
+      Rwandan Francs (FRW).
+    </p>
+  </div>
+</section>
+
+
+
+
 
       {/* Main Content */}
       <main className="p-6 space-y-6">
         {/* Contact and Currency Converter */}
         <div className="flex flex-col lg:flex-row lg:space-x-6">
           {/* Contact Section */}
-          <section className="flex-1 bg-white rounded-lg shadow-lg p-6 mb-6 lg:mb-0">
+          <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6 mb-6 lg:mb-0">
             <h2 className="text-xl font-bold text-gray-800 mb-4">Contact Us</h2>
             {error && <p className="text-red-500">{error}</p>}
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
@@ -150,8 +166,8 @@ const App = () => {
                   <button
                     type="button"
                     onClick={() => document.getElementById("fileInput").click()}
-                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
-                  >
+                    className="w-full bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-600 my-4"
+                  > 
                     Upload Screenshot
                   </button>
                 </div>
@@ -159,15 +175,15 @@ const App = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700"
+                className="w-full bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-600"
               >
-                {loading ? "Sending..." : "Send"}
+                {loading ? "Sending...🌿" : "Send 🧜‍♀️"}
               </button>
             </form>
           </section>
 
           {/* Currency Converter Section */}
-          <section className="flex-1 bg-white rounded-lg shadow-lg p-6">
+          <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
             <h2 className="text-xl font-bold text-gray-800 mb-4">
               Currency Converter
             </h2>
@@ -201,7 +217,7 @@ const App = () => {
               </div>
               <button
                 onClick={handleConversion}
-                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700"
+                className="w-full bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-600"
               >
                 Convert
               </button>
@@ -219,6 +235,20 @@ const App = () => {
       <footer className="bg-gray-800 text-white text-center py-4">
         <p>
           © 2024 Currency Transfer App | Developed by Patrick |{" "}
+          <a
+            href="https://www.instagram.com/ck_tr_pa/"
+            target="_blank"
+            className="underline"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://www.instagram.com/ck_tr_pa/"
+            target="_blank"
+            className="underline"
+          >
+            Whatsapp
+          </a>
           <a
             href="https://www.instagram.com/ck_tr_pa/"
             target="_blank"
