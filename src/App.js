@@ -114,7 +114,10 @@ const App = () => {
         <div className="flex flex-col lg:flex-row lg:space-x-6">
           {/* Contact Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6 mb-6 lg:mb-0">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">Contact Us</h2>
+            <h2 className="text-xl font-bold text-gray-800 mb-4">Contact Us & Payment Proof</h2>
+ <p className="text-lg font-bold text-gray-700 mt-4">
+                  Converted Amount: {convertedAmount.toFixed(2)}
+                </p>
             {error && <p className="text-red-500">{error}</p>}
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -235,7 +238,7 @@ const App = () => {
       <footer className="bg-gray-800 text-white text-center py-4">
         <p>
           © 2024 Currency Transfer App | Developed by Patrick |{" "}
-          <a
+         <div className="flex gap-6 text-xl text-green-600"> <a
             href="https://www.instagram.com/ck_tr_pa/"
             target="_blank"
             className="underline"
@@ -250,12 +253,12 @@ const App = () => {
             Whatsapp
           </a>
           <a
-            href="https://www.instagram.com/ck_tr_pa/"
+            href="https://www.instagram.com/martin__91__91/"
             target="_blank"
             className="underline"
           >
             Instagram
-          </a>
+          </a></div>
         </p>
       </footer>
     </div>
