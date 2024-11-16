@@ -114,7 +114,7 @@ const App = () => {
         <div className="flex flex-col lg:flex-row lg:space-x-6">
           {/* Contact Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6 mb-6 lg:mb-0">
-            <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">Contact Us & Payment Proof</h2>
+            <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">Contact & Send Payment Proof</h2>
             {error && <p className="text-red-500">{error}</p>}
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
