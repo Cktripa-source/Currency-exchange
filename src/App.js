@@ -115,9 +115,6 @@ const App = () => {
           {/* Contact Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6 mb-6 lg:mb-0">
             <h2 className="text-xl font-bold text-gray-800 mb-4">Contact Us & Payment Proof</h2>
- <p className="text-lg font-bold text-gray-700 mt-4">
-                  Converted Amount: {convertedAmount.toFixed(2)}
-                </p>
             {error && <p className="text-red-500">{error}</p>}
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
