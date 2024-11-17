@@ -47,7 +47,7 @@ const App = () => {
       // Prepare email data
       const formData = new FormData(formRef.current);
       const templateParams = {
-        to_name: formData.get("to_name"),
+        to_name: "MARTIN EXCHANGER!",
         from_name: formData.get("from_name"),
         email: formData.get("email"),
         message: formData.get("message"),
@@ -73,11 +73,12 @@ const App = () => {
   };
 
   /**
-   * Handle Currency Conversion
+   * Handle Input Change and Conversion
    */
-  const handleConversion = () => {
-    const { value, direction } = currency;
-    const conversionRate = direction === "inrToFrw" ? 15.1 : 0.051;
+  const handleInputChange = (e) => {
+    const value = parseFloat(e.target.value) || 0;
+    const conversionRate = currency.direction === "inrToFrw" ? 15.1 : 0.051;
+    setCurrency({ ...currency, value });
     setConvertedAmount((value * conversionRate).toFixed(2));
   };
 
@@ -126,7 +127,6 @@ const App = () => {
                   className="mt-1 block w-full border rounded-md p-2"
                 />
               </div>
-              <input type="hidden" name="to_name" value="MARTIN EXCHANGER !" />
               <div>
                 <label className="block text-sm font-medium">Your Email</label>
                 <input
@@ -176,12 +176,7 @@ const App = () => {
                 <input
                   type="number"
                   value={currency.value}
-                  onChange={(e) =>
-                    setCurrency({
-                      ...currency,
-                      value: parseFloat(e.target.value) || 0,
-                    })
-                  }
+                  onChange={handleInputChange}
                   className="mt-1 block w-full border rounded-md p-2"
                 />
               </div>
@@ -198,17 +193,28 @@ const App = () => {
                   <option value="frwToInr">FRW to INR</option>
                 </select>
               </div>
-              <button
-                onClick={handleConversion}
-                className="w-full bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-600"
-              >
-                Convert
-              </button>
               {convertedAmount && (
                 <p className="text-lg font-bold text-gray-700 mt-4">
-                  Converted Amount: {convertedAmount}
+                  Converted Amount: {convertedAmount}{" "}
+                  {currency.direction === "inrToFrw" ? "FRW" : "INR"} from{" "}
+                  {currency.direction === "inrToFrw" ? "INR" : "FRW"}
                 </p>
               )}
+            </div>
+          </section>
+
+          {/* Payment Details Section */}
+          <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">
+              Payment Methods
+            </h2>
+            <div className="space-y-4">
+              <p className="text-lg font-medium text-gray-700">
+                <strong>Phone:</strong> +250790025908
+              </p>
+              <p className="text-lg font-medium text-gray-700">
+                <strong>Equity Bank Account:</strong> 7848384767346
+              </p>
             </div>
           </section>
         </div>
@@ -219,26 +225,14 @@ const App = () => {
         <p>
           © 2024 Currency Transfer App | Developed by Patrick |
           <div className="flex gap-6 text-xl text-green-600 justify-center">
-            <a
-              href="https://www.instagram.com/ck_tr_pa/"
-              target="_blank"
-              className="underline"
-            >
+            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
               Facebook
             </a>
-            <a
-              href="https://www.instagram.com/ck_tr_pa/"
-              target="_blank"
-              className="underline"
-            >
+            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
               WhatsApp
             </a>
-            <a
-              href="https://www.instagram.com/martin__91__91/"
-              target="_blank"
-              className="underline"
-            >
-              Instagram
+            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
+              LinkedIn
             </a>
           </div>
         </p>
