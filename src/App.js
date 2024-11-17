@@ -10,8 +10,7 @@ const App = () => {
   const [error, setError] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [convertedAmount, setConvertedAmount] = useState("");
-  const [currency, setCurrency] = useState({ value: 0, direction: "inrToFrw" });
-  const [showMobileMenu, setShowMobileMenu] = useState(false);  // Added mobile menu state
+  const [currency, setCurrency] = useState({ value: 0, direction: "inrToFrw" });  // Added mobile menu state
   const formRef = useRef();
 
   /**
@@ -104,16 +103,8 @@ const App = () => {
 
         {/* Optional Right Section for Future Use */}
         <div className="relative">
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden text-white p-2 rounded-md bg-green-600 hover:bg-green-700"
-            onClick={() => setShowMobileMenu(!showMobileMenu)}
-          >
-            Menu
-          </button>
-
           {/* Links for larger screens */}
-          <div className="hidden md:flex space-x-6 text-white text-lg">
+          <div className="md:flex space-x-6 text-white text-lg">
             <a
               href="https://www.instagram.com/ck_tr_pa/"
               target="_blank"
@@ -284,7 +275,7 @@ const App = () => {
           </section>
 
           {/* Payment Methods Section */}
-          <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
+          <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6 my-10">
             <h2 className="text-2xl font-bold font-mono text-green-500 mb-4">Payment Methods</h2>
             <div className="space-y-4">
               <p className="text-lg font-medium text-gray-700 p-2 border rounded-full">
