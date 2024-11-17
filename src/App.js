@@ -183,17 +183,19 @@ const handleConversion = () => {
   <div className="space-y-4">
     <div>
       <label className="block text-sm font-medium">Amount</label>
-      <input
-        type="number"
-        value={currency.value}
-        onChange={(e) =>
-          setCurrency({
-            ...currency,
-            value: parseFloat(e.target.value) || 0,
-          })
-        }
-        className="mt-1 block w-full border rounded-md p-2"
-      />
+    <input
+  type="number"
+  value={currency.value === 0.00 ? "" : currency.value} // Show empty string if value is 0
+  onChange={(e) => {
+    const inputValue = e.target.value;
+    setCurrency({
+      ...currency,
+      value: inputValue === "" ? 0 : parseFloat(inputValue), // Allow empty string or parse number
+    });
+  }}
+  className="mt-1 block w-full border rounded-md p-2"
+/>
+
     </div>
     <div>
       <label className="block text-sm font-medium">Convert</label>
@@ -215,7 +217,7 @@ const handleConversion = () => {
       Convert
     </button>
     {convertedAmount && (
-      <p className="text-lg font-bold text-gray-700 mt-4">
+      <p className="text-lg font-bold text-gray-700 mt-4 p-2 border rounded-full">
         {convertedAmount}
       </p>
     )}
@@ -230,10 +232,10 @@ const handleConversion = () => {
               Payment Methods
             </h2>
             <div className="space-y-4">
-              <p className="text-lg font-medium text-gray-700">
+              <p className="text-lg font-medium text-gray-700 p-2 border rounded-full">
                 <strong>Phone:</strong> +250790025908
               </p>
-              <p className="text-lg font-medium text-gray-700">
+              <p className="text-lg font-medium text-gray-700 p-2 border rounded-full">
                 <strong>Equity Bank Account:</strong> 7848384767346
               </p>
             </div>
