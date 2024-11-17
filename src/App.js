@@ -107,17 +107,74 @@ const handleConversion = () => {
   </div>
 
   {/* Optional Right Section for Future Use */}
-  <div className="hidden md:block">
-    <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
-              Facebook
-            </a>
-            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
-              WhatsApp
-            </a>
-            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
-              Instagram
-            </a>
+  <div className="relative">
+  {/* Mobile Menu Toggle */}
+  <button
+    className="md:hidden text-white p-2 rounded-md bg-green-600 hover:bg-green-700"
+    onClick={() => setShowMobileMenu(!showMobileMenu)} // Add a state for mobile menu
+  >
+    Menu
+  </button>
+
+  {/* Links for larger screens */}
+  <div className="hidden md:flex space-x-6 text-white text-lg">
+    <a
+      href="https://www.instagram.com/ck_tr_pa/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline hover:text-gray-300"
+    >
+      Facebook
+    </a>
+    <a
+      href="https://www.instagram.com/ck_tr_pa/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline hover:text-gray-300"
+    >
+      WhatsApp
+    </a>
+    <a
+      href="https://www.instagram.com/ck_tr_pa/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline hover:text-gray-300"
+    >
+      Instagram
+    </a>
   </div>
+
+  {/* Dropdown Menu for mobile */}
+  {showMobileMenu && (
+    <div className="md:hidden absolute top-full left-0 right-0 bg-green-500 text-white flex flex-col space-y-2 p-4 rounded-md shadow-lg">
+      <a
+        href="https://www.instagram.com/ck_tr_pa/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline hover:text-gray-300"
+      >
+        Facebook
+      </a>
+      <a
+        href="https://www.instagram.com/ck_tr_pa/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline hover:text-gray-300"
+      >
+        WhatsApp
+      </a>
+      <a
+        href="https://www.instagram.com/ck_tr_pa/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline hover:text-gray-300"
+      >
+        Instagram
+      </a>
+    </div>
+  )}
+</div>
+
 </header>
 
 
