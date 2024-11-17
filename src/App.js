@@ -85,7 +85,7 @@ const App = () => {
       <section
   className="h-1/2 p-6 sm:p-10 py-10 sm:py-20 flex items-center justify-center relative bg-cover sm:bg-contain bg-center"
   style={{
-    backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: `url(${backgroundImage})`
   }}
 >
   {/* Blurred Overlay */}
