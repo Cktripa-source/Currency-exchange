@@ -76,21 +76,19 @@ const App = () => {
    * Handle Input Change and Conversion
    */
  // Currency conversion logic
-const handleInputChange = (e) => {
-  const value = e.target.value;
+const handleConversion = () => {
+  const { value, direction } = currency;
+  const conversionRate = direction === "inrToFrw" ? 15.1 : 0.051;
 
-  // Allow the input to be empty
-  if (value === "") {
-    setCurrency({ ...currency, value: "" });
-    setConvertedAmount("");
-    return;
-  }
+  // Calculate the converted amount
+  const converted = (value * conversionRate).toFixed(3);
 
-  // Parse the value as a number and calculate conversion
-  const numericValue = parseFloat(value) || 0;
-  const conversionRate = currency.direction === "inrToFrw" ? 15.1 : 0.051;
-  setCurrency({ ...currency, value: numericValue });
-  setConvertedAmount((numericValue * conversionRate).toFixed(5));
+  // Determine currency labels based on direction
+  const fromCurrency = direction === "inrToFrw" ? "INR" : "FRW";
+  const toCurrency = direction === "inrToFrw" ? "FRW" : "INR";
+
+  // Set the converted result in the desired format
+  setConvertedAmount(`${value} ${fromCurrency} = ${converted} ${toCurrency}`);
 };
 
 
@@ -100,7 +98,7 @@ const handleInputChange = (e) => {
       {/* Header */}
       <header className="bg-green-500 text-white p-4 text-center">
         <h1 className="text-2xl font-bold p-4 border rounded-full">
-          CURRENCY TRANSFER APP
+        MARTIN CURRENCY TRANSFER APP
         </h1>
       </header>
 
@@ -126,7 +124,7 @@ const handleInputChange = (e) => {
         <div className="flex flex-col lg:flex-row lg:space-x-6">
           {/* Contact Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6 mb-6 lg:mb-0">
-            <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">
+            <h2 className="text-2xl font-bold font-mono  text-green-500 mb-4">
               Contact & Send Payment Proof
             </h2>
             {error && <p className="text-red-500">{error}</p>}
@@ -177,22 +175,25 @@ const handleInputChange = (e) => {
               </button>
             </form>
           </section>
-
-        {/* Currency Converter Section */}
-<section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
-  <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">
+{/* Currency convert section */}
+  <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
+  <h2 className="text-2xl text-green-500 font-bold font-mono mb-4">
     Currency Converter
   </h2>
   <div className="space-y-4">
     <div>
       <label className="block text-sm font-medium">Amount</label>
-     <input
-  type="number"
-  value={currency.value === 0 ? "" : currency.value} // Show blank for 0 at initial state
-  onChange={handleInputChange}
-  className="mt-1 block w-full border rounded-md p-2"
-/>
-
+      <input
+        type="number"
+        value={currency.value}
+        onChange={(e) =>
+          setCurrency({
+            ...currency,
+            value: parseFloat(e.target.value) || 0,
+          })
+        }
+        className="mt-1 block w-full border rounded-md p-2"
+      />
     </div>
     <div>
       <label className="block text-sm font-medium">Convert</label>
@@ -207,22 +208,25 @@ const handleInputChange = (e) => {
         <option value="frwToInr">FRW to INR</option>
       </select>
     </div>
+    <button
+      onClick={handleConversion}
+      className="w-full bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-600"
+    >
+      Convert
+    </button>
     {convertedAmount && (
       <p className="text-lg font-bold text-gray-700 mt-4">
-        {`1 ${
-          currency.direction === "inrToFrw" ? "INR" : "FRW"
-        } = ${convertedAmount} ${
-          currency.direction === "inrToFrw" ? "FRW" : "INR"
-        }`}
+        {convertedAmount}
       </p>
     )}
   </div>
 </section>
 
 
+
           {/* Payment Details Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">
+            <h2 className="text-2xl font-bold font-mono  text-green-500 mb-4">
               Payment Methods
             </h2>
             <div className="space-y-4">
@@ -249,7 +253,7 @@ const handleInputChange = (e) => {
               WhatsApp
             </a>
             <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
-              LinkedIn
+              Instagram
             </a>
           </div>
         </p>
