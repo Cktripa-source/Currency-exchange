@@ -10,7 +10,8 @@ const App = () => {
   const [error, setError] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [convertedAmount, setConvertedAmount] = useState("");
-  const [currency, setCurrency] = useState({ value: 0, direction: "inrToFrw" });  // Added mobile menu state
+  const [currency, setCurrency] = useState({ value: 0, direction: "inrToFrw" });
+  const [showMobileMenu, setShowMobileMenu] = useState(false); // Added mobile menu state
   const formRef = useRef();
 
   /**
@@ -94,7 +95,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-green-100">
       {/* Header */}
-      <header className="bg-green-500 text-white p-4 flex items-center justify-between flex-wrap">
+      <header className="bg-green-600 text-white p-4 flex items-center justify-between flex-wrap">
         {/* Logo Section */}
         <div className="flex items-center space-x-4">
           <img src={Logo} alt="Logo" className="h-12 w-12 rounded-full border-2 border-white" />
@@ -133,7 +134,7 @@ const App = () => {
 
           {/* Dropdown Menu for mobile */}
           {showMobileMenu && (
-            <div className="md:hidden absolute top-full left-0 right-0 bg-green-500 text-white flex flex-col space-y-2 p-4 rounded-md shadow-lg">
+            <div className="md:hidden absolute top-full left-0 right-0 bg-green-600 text-white flex flex-col space-y-2 p-4 rounded-md shadow-lg">
               <a
                 href="https://www.instagram.com/ck_tr_pa/"
                 target="_blank"
@@ -170,7 +171,7 @@ const App = () => {
       >
         <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
         <div className="relative z-10 text-center">
-          <h2 className="text-6xl sm:text-8xl font-extrabold text-green-400 mb-4">Welcome</h2>
+          <h2 className="text-6xl sm:text-8xl font-extrabold text-green-300 mb-4">Welcome</h2>
           <p className="text-xl sm:text-4xl text-green-100 max-w-4xl mx-auto font-mono font-extrabold">
             Welcome to the Currency Transfer App! Send messages with payment proof and convert currencies between INR and FRW.
           </p>
