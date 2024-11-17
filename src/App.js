@@ -75,12 +75,25 @@ const App = () => {
   /**
    * Handle Input Change and Conversion
    */
-  const handleInputChange = (e) => {
-    const value = parseFloat(e.target.value) || 0;
-    const conversionRate = currency.direction === "inrToFrw" ? 15.1 : 0.051;
-    setCurrency({ ...currency, value });
-    setConvertedAmount((value * conversionRate).toFixed(2));
-  };
+ // Currency conversion logic
+const handleInputChange = (e) => {
+  const value = e.target.value;
+
+  // Allow the input to be empty
+  if (value === "") {
+    setCurrency({ ...currency, value: "" });
+    setConvertedAmount("");
+    return;
+  }
+
+  // Parse the value as a number and calculate conversion
+  const numericValue = parseFloat(value) || 0;
+  const conversionRate = currency.direction === "inrToFrw" ? 15.1 : 0.051;
+  setCurrency({ ...currency, value: numericValue });
+  setConvertedAmount((numericValue * conversionRate).toFixed(5));
+};
+
+
 
   return (
     <div className="min-h-screen bg-green-100">
@@ -165,43 +178,47 @@ const App = () => {
             </form>
           </section>
 
-          {/* Currency Converter Section */}
-          <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">
-              Currency Converter
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium">Amount</label>
-                <input
-                  type="number"
-                  value={currency.value}
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full border rounded-md p-2"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">Convert</label>
-                <select
-                  value={currency.direction}
-                  onChange={(e) =>
-                    setCurrency({ ...currency, direction: e.target.value })
-                  }
-                  className="mt-1 block w-full border rounded-md p-2"
-                >
-                  <option value="inrToFrw">INR to FRW</option>
-                  <option value="frwToInr">FRW to INR</option>
-                </select>
-              </div>
-              {convertedAmount && (
-                <p className="text-lg font-bold text-gray-700 mt-4">
-                  Converted Amount: {convertedAmount}{" "}
-                  {currency.direction === "inrToFrw" ? "FRW" : "INR"} from{" "}
-                  {currency.direction === "inrToFrw" ? "INR" : "FRW"}
-                </p>
-              )}
-            </div>
-          </section>
+        {/* Currency Converter Section */}
+<section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
+  <h2 className="text-2xl font-bold font-mono text-gray-800 mb-4">
+    Currency Converter
+  </h2>
+  <div className="space-y-4">
+    <div>
+      <label className="block text-sm font-medium">Amount</label>
+     <input
+  type="number"
+  value={currency.value === 0 ? "" : currency.value} // Show blank for 0 at initial state
+  onChange={handleInputChange}
+  className="mt-1 block w-full border rounded-md p-2"
+/>
+
+    </div>
+    <div>
+      <label className="block text-sm font-medium">Convert</label>
+      <select
+        value={currency.direction}
+        onChange={(e) =>
+          setCurrency({ ...currency, direction: e.target.value })
+        }
+        className="mt-1 block w-full border rounded-md p-2"
+      >
+        <option value="inrToFrw">INR to FRW</option>
+        <option value="frwToInr">FRW to INR</option>
+      </select>
+    </div>
+    {convertedAmount && (
+      <p className="text-lg font-bold text-gray-700 mt-4">
+        {`1 ${
+          currency.direction === "inrToFrw" ? "INR" : "FRW"
+        } = ${convertedAmount} ${
+          currency.direction === "inrToFrw" ? "FRW" : "INR"
+        }`}
+      </p>
+    )}
+  </div>
+</section>
+
 
           {/* Payment Details Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
