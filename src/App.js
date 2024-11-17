@@ -59,10 +59,10 @@ const App = () => {
 
       // Send email using EmailJS
       await emailjs.send(
-        "service_71uo36k",
-        "template_075izud",
+        "service_r0au4i2",
+        "template_6ju20hn",
         templateParams,
-        "yScYlzZAGrKBPtyJG"
+        "HM-EG97fBUfe2HXc1"
       );
 
       alert("Email sent successfully!");
