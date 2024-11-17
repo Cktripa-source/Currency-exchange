@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 import backgroundImage from "./1711107399590.gif";
-import Logo from "./app-icon.png"
+import Logo from "./app-icon.png";
 
 const App = () => {
   // State Management
@@ -11,6 +11,7 @@ const App = () => {
   const [imageFile, setImageFile] = useState(null);
   const [convertedAmount, setConvertedAmount] = useState("");
   const [currency, setCurrency] = useState({ value: 0, direction: "inrToFrw" });
+  const [showMobileMenu, setShowMobileMenu] = useState(false);  // Added mobile menu state
   const formRef = useRef();
 
   /**
@@ -76,107 +77,100 @@ const App = () => {
   /**
    * Handle Input Change and Conversion
    */
- // Currency conversion logic
-const handleConversion = () => {
-  const { value, direction } = currency;
-  const conversionRate = direction === "inrToFrw" ? 15.1 : 0.051;
+  const handleConversion = () => {
+    const { value, direction } = currency;
+    const conversionRate = direction === "inrToFrw" ? 15.1 : 0.051;
 
-  // Calculate the converted amount
-  const converted = (value * conversionRate).toFixed(3);
+    // Calculate the converted amount
+    const converted = (value * conversionRate).toFixed(3);
 
-  // Determine currency labels based on direction
-  const fromCurrency = direction === "inrToFrw" ? "INR" : "FRW";
-  const toCurrency = direction === "inrToFrw" ? "FRW" : "INR";
+    // Determine currency labels based on direction
+    const fromCurrency = direction === "inrToFrw" ? "INR" : "FRW";
+    const toCurrency = direction === "inrToFrw" ? "FRW" : "INR";
 
-  // Set the converted result in the desired format
-  setConvertedAmount(`${value} ${fromCurrency} = ${converted} ${toCurrency}`);
-};
-
-
+    // Set the converted result in the desired format
+    setConvertedAmount(`${value} ${fromCurrency} = ${converted} ${toCurrency}`);
+  };
 
   return (
     <div className="min-h-screen bg-green-100">
       {/* Header */}
-     <header className="bg-green-500 text-white p-4 flex items-center justify-between flex-wrap">
-  {/* Logo Section */}
-  <div className="flex items-center space-x-4">
-    <img src={Logo} alt="Logo" className="h-12 w-12 rounded-full border-2 border-white" />
-    <h1 className="text-xl md:text-2xl font-bold">
-      MARTIN CURRENCY TRANSFER APP
-    </h1>
-  </div>
+      <header className="bg-green-500 text-white p-4 flex items-center justify-between flex-wrap">
+        {/* Logo Section */}
+        <div className="flex items-center space-x-4">
+          <img src={Logo} alt="Logo" className="h-12 w-12 rounded-full border-2 border-white" />
+          <h1 className="text-xl md:text-2xl font-bold">MARTIN CURRENCY TRANSFER APP</h1>
+        </div>
 
-  {/* Optional Right Section for Future Use */}
-  <div className="relative">
-  {/* Mobile Menu Toggle */}
-  <button
-    className="md:hidden text-white p-2 rounded-md bg-green-600 hover:bg-green-700"
-    onClick={() => setShowMobileMenu(!showMobileMenu)} // Add a state for mobile menu
-  >
-    Menu
-  </button>
+        {/* Optional Right Section for Future Use */}
+        <div className="relative">
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden text-white p-2 rounded-md bg-green-600 hover:bg-green-700"
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
+          >
+            Menu
+          </button>
 
-  {/* Links for larger screens */}
-  <div className="hidden md:flex space-x-6 text-white text-lg">
-    <a
-      href="https://www.instagram.com/ck_tr_pa/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover:underline hover:text-gray-300"
-    >
-      Facebook
-    </a>
-    <a
-      href="https://www.instagram.com/ck_tr_pa/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover:underline hover:text-gray-300"
-    >
-      WhatsApp
-    </a>
-    <a
-      href="https://www.instagram.com/ck_tr_pa/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover:underline hover:text-gray-300"
-    >
-      Instagram
-    </a>
-  </div>
+          {/* Links for larger screens */}
+          <div className="hidden md:flex space-x-6 text-white text-lg">
+            <a
+              href="https://www.instagram.com/ck_tr_pa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline hover:text-gray-300"
+            >
+              Facebook
+            </a>
+            <a
+              href="https://www.instagram.com/ck_tr_pa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline hover:text-gray-300"
+            >
+              WhatsApp
+            </a>
+            <a
+              href="https://www.instagram.com/ck_tr_pa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline hover:text-gray-300"
+            >
+              Instagram
+            </a>
+          </div>
 
-  {/* Dropdown Menu for mobile */}
-  {showMobileMenu && (
-    <div className="md:hidden absolute top-full left-0 right-0 bg-green-500 text-white flex flex-col space-y-2 p-4 rounded-md shadow-lg">
-      <a
-        href="https://www.instagram.com/ck_tr_pa/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:underline hover:text-gray-300"
-      >
-        Facebook
-      </a>
-      <a
-        href="https://www.instagram.com/ck_tr_pa/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:underline hover:text-gray-300"
-      >
-        WhatsApp
-      </a>
-      <a
-        href="https://www.instagram.com/ck_tr_pa/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:underline hover:text-gray-300"
-      >
-        Instagram
-      </a>
-    </div>
-  )}
-</div>
-
-</header>
-
+          {/* Dropdown Menu for mobile */}
+          {showMobileMenu && (
+            <div className="md:hidden absolute top-full left-0 right-0 bg-green-500 text-white flex flex-col space-y-2 p-4 rounded-md shadow-lg">
+              <a
+                href="https://www.instagram.com/ck_tr_pa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline hover:text-gray-300"
+              >
+                Facebook
+              </a>
+              <a
+                href="https://www.instagram.com/ck_tr_pa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline hover:text-gray-300"
+              >
+                WhatsApp
+              </a>
+              <a
+                href="https://www.instagram.com/ck_tr_pa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline hover:text-gray-300"
+              >
+                Instagram
+              </a>
+            </div>
+          )}
+        </div>
+      </header>
 
       {/* Welcome Section */}
       <section
@@ -185,12 +179,9 @@ const handleConversion = () => {
       >
         <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
         <div className="relative z-10 text-center">
-          <h2 className="text-6xl sm:text-8xl font-extrabold text-green-400 mb-4">
-            Welcome
-          </h2>
+          <h2 className="text-6xl sm:text-8xl font-extrabold text-green-400 mb-4">Welcome</h2>
           <p className="text-xl sm:text-4xl text-green-100 max-w-4xl mx-auto font-mono font-extrabold">
-            Welcome to the Currency Transfer App! Send messages with payment
-            proof and convert currencies between INR and FRW.
+            Welcome to the Currency Transfer App! Send messages with payment proof and convert currencies between INR and FRW.
           </p>
         </div>
       </section>
@@ -200,9 +191,7 @@ const handleConversion = () => {
         <div className="flex flex-col lg:flex-row lg:space-x-6">
           {/* Contact Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6 mb-6 lg:mb-0">
-            <h2 className="text-2xl font-bold font-mono  text-green-500 mb-4">
-              Contact & Send Payment Proof
-            </h2>
+            <h2 className="text-2xl font-bold font-mono text-green-500 mb-4">Contact & Send Payment Proof</h2>
             {error && <p className="text-red-500">{error}</p>}
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -232,9 +221,7 @@ const handleConversion = () => {
                 ></textarea>
               </div>
               <div>
-                <label className="block text-sm font-medium">
-                  Payment Screenshot
-                </label>
+                <label className="block text-sm font-medium">Payment Screenshot</label>
                 <input
                   type="file"
                   accept="image/*"
@@ -251,62 +238,54 @@ const handleConversion = () => {
               </button>
             </form>
           </section>
-{/* Currency convert section */}
-  <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
-  <h2 className="text-2xl text-green-500 font-bold font-mono mb-4">
-    Currency Converter
-  </h2>
-  <div className="space-y-4">
-    <div>
-      <label className="block text-sm font-medium">Amount</label>
-    <input
-  type="number"
-  value={currency.value === 0.00 ? "" : currency.value} // Show empty string if value is 0
-  onChange={(e) => {
-    const inputValue = e.target.value;
-    setCurrency({
-      ...currency,
-      value: inputValue === "" ? 0 : parseFloat(inputValue), // Allow empty string or parse number
-    });
-  }}
-  className="mt-1 block w-full border rounded-md p-2"
-/>
 
-    </div>
-    <div>
-      <label className="block text-sm font-medium">Convert</label>
-      <select
-        value={currency.direction}
-        onChange={(e) =>
-          setCurrency({ ...currency, direction: e.target.value })
-        }
-        className="mt-1 block w-full border rounded-md p-2"
-      >
-        <option value="inrToFrw">INR to FRW</option>
-        <option value="frwToInr">FRW to INR</option>
-      </select>
-    </div>
-    <button
-      onClick={handleConversion}
-      className="w-full bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-600"
-    >
-      Convert
-    </button>
-    {convertedAmount && (
-      <p className="text-lg font-bold text-gray-700 mt-4 p-2 border rounded-full">
-        {convertedAmount}
-      </p>
-    )}
-  </div>
-</section>
-
-
-
-          {/* Payment Details Section */}
+          {/* Currency Converter Section */}
           <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold font-mono  text-green-500 mb-4">
-              Payment Methods
-            </h2>
+            <h2 className="text-2xl text-green-500 font-bold font-mono mb-4">Currency Converter</h2>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium">Amount</label>
+                <input
+                  type="number"
+                  value={currency.value === 0 ? "" : currency.value}
+                  onChange={(e) => {
+                    const inputValue = e.target.value;
+                    setCurrency({
+                      ...currency,
+                      value: inputValue === "" ? 0 : parseFloat(inputValue),
+                    });
+                  }}
+                  className="mt-1 block w-full border rounded-md p-2"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Convert</label>
+                <select
+                  value={currency.direction}
+                  onChange={(e) => setCurrency({ ...currency, direction: e.target.value })}
+                  className="mt-1 block w-full border rounded-md p-2"
+                >
+                  <option value="inrToFrw">INR to FRW</option>
+                  <option value="frwToInr">FRW to INR</option>
+                </select>
+              </div>
+              <button
+                onClick={handleConversion}
+                className="w-full bg-green-400 text-white py-2 px-4 rounded-md hover:bg-green-600"
+              >
+                Convert
+              </button>
+              {convertedAmount && (
+                <p className="text-lg font-bold text-gray-700 mt-4 p-2 border rounded-full">
+                  {convertedAmount}
+                </p>
+              )}
+            </div>
+          </section>
+
+          {/* Payment Methods Section */}
+          <section className="flex-1 bg-green-50 rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-bold font-mono text-green-500 mb-4">Payment Methods</h2>
             <div className="space-y-4">
               <p className="text-lg font-medium text-gray-700 p-2 border rounded-full">
                 <strong>Phone:</strong> +250790025908
@@ -324,15 +303,9 @@ const handleConversion = () => {
         <p>
           © 2024 Currency Transfer App | Developed by Patrick |
           <div className="flex gap-6 text-xl text-green-600 justify-center">
-            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
-              Facebook
-            </a>
-            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
-              WhatsApp
-            </a>
-            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
-              Instagram
-            </a>
+            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">WhatsApp</a>
+            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">Instagram</a>
           </div>
         </p>
       </footer>
