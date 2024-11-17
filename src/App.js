@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 import backgroundImage from "./1711107399590.gif";
+import Logo from "./app-icon.png"
 
 const App = () => {
   // State Management
@@ -96,11 +97,29 @@ const handleConversion = () => {
   return (
     <div className="min-h-screen bg-green-100">
       {/* Header */}
-      <header className="bg-green-500 text-white p-4 text-center">
-        <h1 className="text-2xl font-bold p-4 border rounded-full">
-        MARTIN CURRENCY TRANSFER APP
-        </h1>
-      </header>
+     <header className="bg-green-500 text-white p-4 flex items-center justify-between flex-wrap">
+  {/* Logo Section */}
+  <div className="flex items-center space-x-4">
+    <img src={Logo} alt="Logo" className="h-12 w-12 rounded-full border-2 border-white" />
+    <h1 className="text-xl md:text-2xl font-bold">
+      MARTIN CURRENCY TRANSFER APP
+    </h1>
+  </div>
+
+  {/* Optional Right Section for Future Use */}
+  <div className="hidden md:block">
+    <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
+              Facebook
+            </a>
+            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
+              WhatsApp
+            </a>
+            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">
+              Instagram
+            </a>
+  </div>
+</header>
+
 
       {/* Welcome Section */}
       <section
