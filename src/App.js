@@ -79,7 +79,7 @@ const App = () => {
    */
   const handleConversion = () => {
     const { value, direction } = currency;
-    const conversionRate = direction === "inrToFrw" ? 15.1 : 0.051;
+    const conversionRate = direction === "inrToFrw" ? 15.7000000 : 0.056179775280;
 
     // Calculate the converted amount
     const converted = (value * conversionRate).toFixed(3);
@@ -136,7 +136,7 @@ const App = () => {
           {showMobileMenu && (
             <div className="md:hidden absolute top-full left-0 right-0 bg-green-600 text-white flex flex-col space-y-2 p-4 rounded-md shadow-lg">
               <a
-                href="https://www.instagram.com/ck_tr_pa/"
+                href="https://www.facebook.com/martin.niyomugabo.3"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline hover:text-gray-300"
@@ -152,7 +152,7 @@ const App = () => {
                 WhatsApp
               </a>
               <a
-                href="https://www.instagram.com/ck_tr_pa/"
+                href="https://www.instagram.com/martin__91__91/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline hover:text-gray-300"
@@ -283,8 +283,10 @@ const App = () => {
                 <strong>Phone:</strong> +250790025908
               </p>
               <p className="text-lg font-medium text-gray-700 p-2 border rounded-full">
-                <strong>Equity Bank Account:</strong> 7848384767346
+                <strong>Equity Bank :</strong>4006100907609
               </p>
+            <p className="text-lg font-medium text-gray-700 p-2 border rounded-full"><strong>Both Acount Name </strong>: NIYOMUGABO MARTIN </p>
+            <p className="text-xl font-medium text-green-500 p-2 border rounded-full">THANK YOU !</p>
             </div>
           </section>
         </div>
@@ -295,9 +297,9 @@ const App = () => {
         <p>
           © 2024 Currency Transfer App | Developed by Patrick |
           <div className="flex gap-6 text-xl text-green-600 justify-center">
-            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">Facebook</a>
+            <a href="https://www.facebook.com/martin.niyomugabo.3" target="_blank">Facebook</a>
             <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">WhatsApp</a>
-            <a href="https://www.instagram.com/ck_tr_pa/" target="_blank">Instagram</a>
+            <a href="https://www.instagram.com/martin__91__91/" target="_blank">Instagram</a>
           </div>
         </p>
       </footer>
